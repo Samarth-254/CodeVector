@@ -13,7 +13,8 @@ function App() {
   const fetchProducts = async (selectedCategory, currentCursor, reset = false) => {
     setLoading(true);
     try {
-      const url = new URL('/api/products', window.location.origin);
+      const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const url = new URL('/api/products', backendUrl);
       if (selectedCategory) {
         url.searchParams.append('category', selectedCategory);
       }
